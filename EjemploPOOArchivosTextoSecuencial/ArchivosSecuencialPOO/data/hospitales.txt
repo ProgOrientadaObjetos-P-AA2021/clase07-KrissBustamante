@@ -1,0 +1,9 @@
+Hospital Isidro ayora;45;304,50
+Hospital UTPL;67;857,60
+Hospital Loja;56;756,40
+Hospital Isidro ayora;45;304,50
+Hospital UTPL;67;857,60
+Hospital Loja;56;756,40
+Hospital Isidro ayora;45;304,50
+Hospital UTPL;67;857,60
+Hospital Loja;56;756,40

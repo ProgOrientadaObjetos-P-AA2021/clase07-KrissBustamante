@@ -13,7 +13,7 @@ public class Ejecutor {
     public static void main(String[] args) {
 
         // nombre del archivo
-        String nombreArchivo = "ciudades.txt";
+        String nombreArchivo = "empresas.txt";
         
         Empresa c1 = new Empresa("Textiles del Ecuador", "Quito");
         

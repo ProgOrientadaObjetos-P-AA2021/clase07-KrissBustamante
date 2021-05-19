@@ -3,21 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package paquete4;
+package paquete6;
 
-// Uso de la clase Formatter para escribir datos en un archivo de texto.
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Formatter;
 
-import paquete1.Empresa;
-
+/**
+ *
+ * @author nixon
+ */
 public class ArchivoEscritura {
 
     private String nombreArchivo;
     private String rutaArchivo;
-    private Empresa registro;
+    private Hospital registro;
     private Formatter salidaArchivo;
 
     public ArchivoEscritura(String n) {
@@ -27,14 +27,14 @@ public class ArchivoEscritura {
         // sacar la información del archivo, previo a volver 
         // a trabajar con el mimso.
         establecerInformacionAnterior();
-        
 
     }
 
     public void establecerInformacionAnterior() {
-        ArchivoLectura lectura = new ArchivoLectura(nombreArchivo);
+        paquete6.ArchivoLectura lectura = new paquete6.ArchivoLectura(
+                nombreArchivo);
         lectura.establecerLista();
-        ArrayList<Empresa> lista = lectura.obtenerLista();
+        ArrayList<Hospital> lista = lectura.obtenerLista();
 
         try {
             salidaArchivo = new Formatter(rutaArchivo);
@@ -42,8 +42,8 @@ public class ArchivoEscritura {
 
                 if (lista.size() > 0) {
                     for (int i = 0; i < lista.size(); i++) {
-                        Empresa p1 = lista.get(i);
-                        establecerRegistro(p1);
+                        Hospital h = lista.get(i);
+                        establecerRegistro(h);
                         establecerSalida();
                     }
                 }
@@ -63,7 +63,7 @@ public class ArchivoEscritura {
                 obtenerNombreArchivo());
     }
 
-    public void establecerRegistro(Empresa n) {
+    public void establecerRegistro(Hospital n) {
         registro = n;
     }
 
@@ -75,16 +75,17 @@ public class ArchivoEscritura {
         return rutaArchivo;
     }
 
-    public Empresa obtenerRegistro() {
+    public Hospital obtenerRegistro() {
         return registro;
     }
 
     // agrega registros al archivo
     public void establecerSalida() {
         try {
-            Empresa p = obtenerRegistro();
-            String cadenaRegistro = String.format("%s;%s",
-                    p.obtenerNombre(), p.obtenerCiudad());
+            Hospital h = obtenerRegistro();
+            String cadenaRegistro = String.format("%s;%d;%.2f",
+                    h.obtenerNombre(), h.obtenerNumeroCamas(),
+                    h.obtenerPesupuesto());
             salidaArchivo.format("%s\n", cadenaRegistro);
 
         } catch (Exception e) {
